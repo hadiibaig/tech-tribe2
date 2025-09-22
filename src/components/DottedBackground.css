@@ -1,0 +1,26 @@
+
+
+.particle-container {
+  position: fixed; /* Ensures it stays as the background */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(70, 20px); /* Adjust columns to fit */
+  grid-template-rows: repeat(100, 20px); /* Adjust rows to fit */
+  gap: 10px;
+  z-index: 1; /* Ensures it stays behind content */
+}
+
+.particle {
+  width: 6px; /* Increase size from 2px to 6px */
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(253, 178, 40), rgb(121, 39, 250));
+  transition: opacity 3s ease-in-out;
+}
+
+.fadeOut {
+  opacity: 0;
+}

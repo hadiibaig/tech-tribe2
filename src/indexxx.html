@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wave Effect Dots</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .dots {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 15px);
+      grid-template-rows: repeat(auto-fit, 15px);
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+      animation: waveEffect 5s infinite ease-in-out;
+    }
+
+    @keyframes waveEffect {
+      0%, 100% {
+        background-color: #ff0077;
+        transform: scale(1);
+      }
+      50% {
+        background-color: #00ffcc;
+        transform: scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dots"></div>
+  
+  <script>
+     const dotsContainer = document.querySelector('.dots');
+      const containerWidth = window.innerWidth;
+      const containerHeight = window.innerHeight;
+
+      const cols = Math.floor(containerWidth / 15); // Adjusted for smaller dots
+      const rows = Math.floor(containerHeight / 15);
+      const totalDots = cols * rows;
+
+      for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+
+        const delay = (i % cols) * 0.1; // Create wave-like delay based on column index
+        dot.style.animationDelay = `${delay}s`;
+
+        dotsContainer.appendChild(dot);
+      }
+  </script>
+</body>
+</html>
